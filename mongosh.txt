@@ -1,0 +1,188 @@
+Test> db.userDocument.insertMany([{firstName : "Ludwig", lastName : "Van", age : 13, email : "email@6", married : true},{firstName : "Jon", lastName : "Snow", age : 43, email : "email@7", married : false},{firstName : "Otar", lastName : "Panchoha", age : 7, email : "email@8", married : false},{firstName : "Barak", lastName : "Obama", age : 18, email : "email@9", married : true},{firstName : "Vova", lastName : "Zelenskiy", age : 45, email : "email@10", married : true}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("645f603d228d9ed49fdafe5c"),
+    '1': ObjectId("645f603d228d9ed49fdafe5d"),
+    '2': ObjectId("645f603d228d9ed49fdafe5e"),
+    '3': ObjectId("645f603d228d9ed49fdafe5f"),
+    '4': ObjectId("645f603d228d9ed49fdafe60")
+  }
+}
+Test> db.userDocument.find()
+[
+  {
+    _id: Long("1"),
+    firstName: 'Ivan',
+    lastName: 'Stron',
+    age: 25,
+    email: 'email@1',
+    isMarried: true,
+    _class: 'com.example.MongoHW.documents.UserDocument'
+  },
+  {
+    _id: Long("3"),
+    firstName: 'Olya',
+    lastName: 'Slovo',
+    age: 15,
+    email: 'email@4',
+    isMarried: false,
+    _class: 'com.example.MongoHW.documents.UserDocument'
+  },
+  {
+    _id: Long("5"),
+    firstName: 'Vika',
+    lastName: 'Goroh',
+    age: 13,
+    email: 'email@5',
+    isMarried: false,
+    _class: 'com.example.MongoHW.documents.UserDocument'
+  },
+  {
+    _id: Long("4"),
+    firstName: 'Andriy',
+    lastName: 'Yats',
+    age: 36,
+    email: 'email@4',
+    isMarried: true,
+    _class: 'com.example.MongoHW.documents.UserDocument'
+  },
+  {
+    _id: Long("2"),
+    firstName: 'Petro',
+    lastName: 'Yats',
+    age: 26,
+    email: 'email@2',
+    isMarried: false,
+    _class: 'com.example.MongoHW.documents.UserDocument'
+  },
+  {
+    _id: ObjectId("645f603d228d9ed49fdafe5c"),
+    firstName: 'Ludwig',
+    lastName: 'Van',
+    age: 13,
+    email: 'email@6',
+    married: true
+  },
+  {
+    _id: ObjectId("645f603d228d9ed49fdafe5d"),
+    firstName: 'Jon',
+    lastName: 'Snow',
+    age: 43,
+    email: 'email@7',
+    married: false
+  },
+  {
+    _id: ObjectId("645f603d228d9ed49fdafe5e"),
+    firstName: 'Otar',
+    lastName: 'Panchoha',
+    age: 7,
+    email: 'email@8',
+    married: false
+  },
+  {
+    _id: ObjectId("645f603d228d9ed49fdafe5f"),
+    firstName: 'Barak',
+    lastName: 'Obama',
+    age: 18,
+    email: 'email@9',
+    married: true
+  },
+  {
+    _id: ObjectId("645f603d228d9ed49fdafe60"),
+    firstName: 'Vova',
+    lastName: 'Zelenskiy',
+    age: 45,
+    email: 'email@10',
+    married: true
+  }
+]
+Test> db.userDocument.find({firstName:"Ivan"})
+[
+  {
+    _id: Long("1"),
+    firstName: 'Ivan',
+    lastName: 'Stron',
+    age: 25,
+    email: 'email@1',
+    isMarried: true,
+    _class: 'com.example.MongoHW.documents.UserDocument'
+  }
+]
+Test> db.userDocument.find({lastName:"Snow"})
+[
+  {
+    _id: ObjectId("645f603d228d9ed49fdafe5d"),
+    firstName: 'Jon',
+    lastName: 'Snow',
+    age: 43,
+    email: 'email@7',
+    married: false
+  }
+]
+Test> db.userDocument.find({email:"email@7"})
+[
+  {
+    _id: ObjectId("645f603d228d9ed49fdafe5d"),
+    firstName: 'Jon',
+    lastName: 'Snow',
+    age: 43,
+    email: 'email@7',
+    married: false
+  }
+]
+Test> db.userDocument.find({age:{$gt:30}})
+[
+  {
+    _id: Long("4"),
+    firstName: 'Andriy',
+    lastName: 'Yats',
+    age: 36,
+    email: 'email@4',
+    isMarried: true,
+    _class: 'com.example.MongoHW.documents.UserDocument'
+  },
+  {
+    _id: ObjectId("645f603d228d9ed49fdafe5d"),
+    firstName: 'Jon',
+    lastName: 'Snow',
+    age: 43,
+    email: 'email@7',
+    married: false
+  },
+  {
+    _id: ObjectId("645f603d228d9ed49fdafe60"),
+    firstName: 'Vova',
+    lastName: 'Zelenskiy',
+    age: 45,
+    email: 'email@10',
+    married: true
+  }
+]
+Test> db.userDocument.find({married: true})
+[
+  {
+    _id: ObjectId("645f603d228d9ed49fdafe5c"),
+    firstName: 'Ludwig',
+    lastName: 'Van',
+    age: 13,
+    email: 'email@6',
+    married: true
+  },
+  {
+    _id: ObjectId("645f603d228d9ed49fdafe5f"),
+    firstName: 'Barak',
+    lastName: 'Obama',
+    age: 18,
+    email: 'email@9',
+    married: true
+  },
+  {
+    _id: ObjectId("645f603d228d9ed49fdafe60"),
+    firstName: 'Vova',
+    lastName: 'Zelenskiy',
+    age: 45,
+    email: 'email@10',
+    married: true
+  }
+]
